@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	 <link rel=icon href="img/a.jpg" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/app.css" />
+        </head>
+     
+
+         <body ng-app="app" ng-cloak>
+             <div class="container">
+                 <div class="navbar">
+                     <div class="navbar-inner">
+                         <ul class="nav">
+                             <li><a ng-href="eventDetail.html">create event</a></li>
+                         </ul>
+                         </div>
+                 </div>
+             <div ng-controller="mainController">
+                Sort by :<select ng-model="sortData">
+                    <option value="-name">Name</option>
+                    <option value="upvote" selected>Upvote</option>
+                    <option value="downvote">downvote</option>
+                </select>
+
+                 filter:<select ng-model="filterData">
+                    <option value="" selected>All</option>
+                    <option value="angular" >angular</option>
+                    <option value="node">node</option>
+                    
+                </select>
+                 <ul style="list-style-type:none">
+                 <li ng-repeat="x in event|orderBy:sortData|filter:{lang:filterData}" style="padding:25px">
+                     <div><img ng-src={{x.imageUrl}} alt={{x.name}} /></div>
+                     <h1 ng-class="bool" ng-bind=x.name|uppercase></h1>
+                     <span>{{x.date|date:'mediumDate'}}</span>
+                    <br />duration:<span >{{x.time|myFilter}}</span>
+
+                     <address>
+                         {{x.location.street}},{{x.location.city}}<br/>
+                         {{x.location.pincode}}
+                     </address>
+                     <button ng-click="upvote(x)">upvote</button>{{x.upvote}}<br/>
+                     <button ng-click="downvote(x)">downvote</button>{{x.downvote}}<br/>
+                     </li>
+                 </ul>
+                 
+                 </div>
+                 </div>
+            <script src="lib/jquery.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+            <script src="lib/angular.min.js"></script>
+           <script src="lib/angular-sanitize.min.js"></script>
+           <script src="js/main.js"></script>
+           <script src="js/filters/filter.js"></script>
+            
+        </body>
+    </html>
