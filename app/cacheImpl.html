@@ -8,7 +8,7 @@
         </head>
      
 
-         <body ng-app="app" ng-cloak ng-controller="editFormController">
+         <body ng-app="app" ng-cloak ng-controller="cacheController">
               <div class="navbar">
                      <div class="navbar-inner">
                          <ul class="nav">
@@ -17,28 +17,25 @@
                          </div>
                  </div>
            <div class="container">
-                    <h1>create new Event</h1>
-                    <hr>
-                <form name="form1">
+                <form >
                     <fieldset>
-                        <label for="eventName" >event name</label>
-                        <input type="text" id="eventName" ng-model="event.name" ng-required="true" /><br/>
-                          <label for="eventDate" >event Date</label>
-                        <input type="text" id="eventDate" ng-model="event.date" ng-required="true" ng-pattern ="/\d\d/\d\d/\d\d\d\d/" /><br/>
-                          <label for="eventTime" >event Time</label>
-                        <input type="text" id="eventTime" ng-model="event.time" ng-required="true"/><br/>
-                          <label for="eventTime" >event location</label>
-                        <input type="text" id="eventLocation" ng-model="event.location" ng-required="true"/>
+                        <label for="eventName" >key</label>
+                        <input type="text" id="eventName" ng-model="key" ng-required="true" /><br/>
+                          <label for="eventDate" >value</label>
+                        <input type="text" id="eventDate" ng-model="value"  <br/>
                        
+                         
 
-                       <input type="text" id="eventPincode" ng-model="event.pincode" ng-required="true"/>
-                       <input type="text" id="eventcity" ng-model="event.city" ng-required="true"/><br/>
-                        <label for="imageUrl" >image</label>
-                        <input type="url" id="eventTime"/ ng-model="event.image"><br/>
+                      
+                       
                         <br/>
                         <br/>
-                        <button  class="btn btn-primary" ng-click="saveData(event,form1)" ng-disabled="form1.$invalid"  >submit</button>
-                        <input type="button" class="btn btn-default" ng-click="cancel()" value="cancel" />
+                        <button  class="btn btn-primary" ng-click="add(key,value)">add data</button>
+                       <h1>get data</h1>
+                       
+                       <input type="text" id="eventDate" ng-model="key1"  <br/>
+                      value from cache: <span>{{getData(key1)}}</span><br />
+                   <p>  {{getInfo()}}</p>
                     </fieldset>
                     </form>
                  </div>  
@@ -47,14 +44,14 @@
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
             <script src="lib/angular.min.js"></script>
            <script src="lib/angular-sanitize.min.js"></script>
+          
            <script src="lib/angular-resource.min.js"></script>
-           <script src="lib/angular-cookies.min.js"></script>
-           
+           <script src="lib/angular-local.min.js"></script>
            <script src="js/app.js"></script>
-           <script src="js/service/eventDataService.js"></script>
+          
            
           
-           <script src="js/controllers/editFormController.js"></script>
+           <script src="js/controllers/cacheController.js"></script>
            
            
             

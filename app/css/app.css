@@ -6,3 +6,6 @@
 {
     color: blue;
 }
+input.ng-dirty.ng-invalid{
+  background-color: pink;
+}

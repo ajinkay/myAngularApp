@@ -9,6 +9,7 @@
      
 
          <body ng-app="app" ng-cloak>
+             
              <div class="container">
                  <div class="navbar">
                      <div class="navbar-inner">
@@ -18,6 +19,7 @@
                          </div>
                  </div>
              <div ng-controller="mainController">
+                    <button class="btn btn-default" ng-click="scrollDown()">scroll</button>
                 Sort by :<select ng-model="sortData">
                     <option value="-name">Name</option>
                     <option value="upvote" selected>Upvote</option>
@@ -26,23 +28,30 @@
 
                  filter:<select ng-model="filterData">
                     <option value="" selected>All</option>
-                    <option value="angular" >angular</option>
-                    <option value="node">node</option>
-                    
+                    <option value="Advanced" >angular</option>
+                    <option value="Introductory">node</option>
+                    <option value="Intermediate">node</option>
                 </select>
+                <div>
+                    <img ng-src="{{event.imageUrl}}" alt={{event.name}} />
+                    <h1>{{event.name}}</h1>
+                    <p>{{event.date}},{{event.time}}</p><br/>
+                    <address>
+                        {{event.location.address}},{{event.location.city}}<br/>
+                        {{event.location.province}}
+                        </address>
+                </div>
                  <ul style="list-style-type:none">
-                 <li ng-repeat="x in event|orderBy:sortData|filter:{lang:filterData}" style="padding:25px">
-                     <div><img ng-src={{x.imageUrl}} alt={{x.name}} /></div>
+                 <li ng-repeat="x in event.sessions|orderBy:sortData|filter:{level:filterData}" style="padding:25px" id="{{x.id}}">
+                     
                      <h1 ng-class="bool" ng-bind=x.name|uppercase></h1>
-                     <span>{{x.date|date:'mediumDate'}}</span>
-                    <br />duration:<span >{{x.time|myFilter}}</span>
+                     <span>{{x.creatorName}}</span>
+                    <br />duration:<span >{{x.duration|myFilter}}</span>
 
-                     <address>
-                         {{x.location.street}},{{x.location.city}}<br/>
-                         {{x.location.pincode}}
-                     </address>
-                     <button ng-click="upvote(x)">upvote</button>{{x.upvote}}<br/>
-                     <button ng-click="downvote(x)">downvote</button>{{x.downvote}}<br/>
+                  
+                     <button ng-click="upvote(x)">upvote</button>{{x.upVoteCount}}<br/>
+                     <button ng-click="downvote(x)">downvote</button>{{x.downVoteCount}}<br/>
+                     <hr/>
                      </li>
                  </ul>
                  
@@ -53,7 +62,14 @@
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
             <script src="lib/angular.min.js"></script>
            <script src="lib/angular-sanitize.min.js"></script>
-           <script src="js/main.js"></script>
+           <script src="lib/angular-resource.min.js"></script>
+           <script src="lib/angular-cookies.min.js"></script>
+           <script src="js/app.js"></script>
+           <script src="js/service/eventDataService.js"></script>
+           <script src="js/controllers/mainController.js"></script>
+           
+           
+          
            <script src="js/filters/filter.js"></script>
             
         </body>
