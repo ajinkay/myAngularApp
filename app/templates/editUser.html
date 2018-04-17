@@ -1,0 +1,26 @@
+
+<div class="container"  >
+     
+            <div>
+                <div style="display:inline-block;width:20%" >
+            <img ng-src="{{getGreveterUrl(user.email)}}" />
+            </div>
+            <div style="display:inline-block;width:70%">
+            <form>
+                  
+                    
+                    <label for="name">user name </label>
+                    <input type="text" id="name" ng-model="user.name" ng-required="true" /><br/>
+                      <label for="email" >email</label>
+                    <input type="text" id="email" ng-model="user.email" /><br/>
+                      <label for="password" >password</label>
+                    <input type="text" id="password" ng-model="user.password"  ng-required="true"/><br/>
+                    <label for="bio">bio</label>
+                    <textarea ng-model="user.bio" id="bio"></textarea>     
+
+               
+                        
+                 </form>   
+                   </div> 
+                </div>
+        </div>

@@ -1,0 +1,39 @@
+<div>
+    <button class="btn btn-default" ng-click="scrollDown()">scroll</button>
+Sort by :<select ng-model="sortData">
+    <option value="-name">Name</option>
+    <option value="upvote" selected>Upvote</option>
+    <option value="downvote">downvote</option>
+</select>
+
+ filter:<select ng-model="filterData">
+    <option value="" selected>All</option>
+    <option value="Advanced" >angular</option>
+    <option value="Introductory">node</option>
+    <option value="Intermediate">node</option>
+</select>
+<div>
+    <img ng-src="{{event.imageUrl}}" alt={{event.name}} />
+    <h1>{{event.name}}</h1>
+    <p>{{event.date}},{{event.time}}</p><br/>
+    <address>
+        {{event.location.address}},{{event.location.city}}<br/>
+        {{event.location.province}}
+        </address>
+</div>
+ <ul style="list-style-type:none">
+ <li ng-repeat="x in event.sessions|orderBy:sortData|filter:{level:filterData}" style="padding:25px" id="{{x.id}}">
+     
+     <h1 ng-class="bool" ng-bind=x.name|uppercase></h1>
+     <span>{{x.creatorName}}</span>
+    <br />duration:<span >{{x.duration|myFilter}}</span>
+
+  
+     <button ng-click="upvote(x)">upvote</button>{{x.upVoteCount}}<br/>
+     <button ng-click="downvote(x)">downvote</button>{{x.downVoteCount}}<br/>
+     <hr/>
+     </li>
+ </ul>
+ 
+ </div>
+ </div>

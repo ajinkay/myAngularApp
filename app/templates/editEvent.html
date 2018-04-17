@@ -1,0 +1,33 @@
+
+     
+
+         <div  class="container">
+              
+           <div >
+                    <h1>create new Event</h1>
+                    <hr>
+                <form name="form1">
+                    <fieldset>
+                        <label for="eventName" >event name</label>
+                        <input type="text" id="eventName" ng-model="event.name" ng-required="true" /><br/>
+                          <label for="eventDate" >event Date</label>
+                        <input type="text" id="eventDate" ng-model="event.date" ng-required="true" ng-pattern ="/\d\d/\d\d/\d\d\d\d/" /><br/>
+                          <label for="eventTime" >event Time</label>
+                        <input type="text" id="eventTime" ng-model="event.time" ng-required="true"/><br/>
+                          <label for="eventTime" >event location</label>
+                        <input type="text" id="eventLocation" ng-model="event.location" ng-required="true"/>
+                       
+
+                       <input type="text" id="eventPincode" ng-model="event.pincode" ng-required="true"/>
+                       <input type="text" id="eventcity" ng-model="event.city" ng-required="true"/><br/>
+                        <label for="imageUrl" >image</label>
+                        <input type="url" id="eventTime"/ ng-model="event.image"><br/>
+                        <br/>
+                        <br/>
+                        <button  class="btn btn-primary" ng-click="saveData(event,form1)" ng-disabled="form1.$invalid"  >submit</button>
+                        <input type="button" class="btn btn-default" ng-click="cancel()" value="cancel" />
+                    </fieldset>
+                    </form>
+                 </div>  
+                 </div>
+           

@@ -1,0 +1,15 @@
+<div class="container">
+    
+    <div  ng-repeat="event in events "style="display: inline-block;width:45%;border: 1px solid black;margin:10px;padding-left:3px">
+        <h3>{{event.name}}</h3>
+        <p>{{event.date}},<span>{{event.time}}<span></p>
+        <address>
+            {{event.location.address}},{{event.location.city}}<br/>
+            {{event.location.province}}
+        </address>
+        <br />
+        <a ng-href="#!/event/{{event.id}}"> see the event details!!</a>
+    </div>
+    
+
+    </div>
