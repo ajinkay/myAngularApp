@@ -1,6 +1,6 @@
 (function(){
 
-    angular.module('app',['ngSanitize','ngResource','ngRoute']).config(function($routeProvider){
+    angular.module('app',['ngSanitize','ngResource','ngRoute']).config(function($routeProvider, $locationProvider){
 
 $routeProvider.when('/addEvent',{
 
@@ -21,11 +21,11 @@ $routeProvider.when('/addEvent',{
     resolve:{
         event: function($route,eventData)
         {
-                eventData.getEventData($route.current.pathParams.eventId);
+               return  eventData.getEventData($route.current.pathParams.eventId);
         }
     }
 })
 .otherwise({redirectTo:'\events'});
-
+    $locationProvider.html5Mode(true);
     });
 })();
